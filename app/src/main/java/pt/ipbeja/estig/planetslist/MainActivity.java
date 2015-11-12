@@ -2,6 +2,8 @@ package pt.ipbeja.estig.planetslist;
 
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.widget.ListView;
+import android.widget.SimpleAdapter;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -23,11 +25,17 @@ public class MainActivity extends AppCompatActivity {
         int [] to = { R.id.imgPlanet, R.id.txtName, R.id.txtSize };
 
         this.planets = this.getPlanetsData();
+
+        SimpleAdapter sa = new SimpleAdapter(this, this.planets, R.layout.itemlistlayout, this.from, to);
+
+        ListView lstPlanets = (ListView) findViewById(R.id.lstPlanets);
+        lstPlanets.setAdapter(sa);
     }
 
     private List<Map<String, Object>> getPlanetsData(){
         List<Map<String, Object>> planets = new ArrayList<Map<String, Object>>();
 
+        //preenche a lista com os items todos
         planets.add(this.getItem(R.drawable.sun, "Sun", 1.0));
         planets.add(this.getItem(R.drawable.earth, "Earth", 2.0));
         planets.add(this.getItem(R.drawable.jupiter, "Jupiter", 3.0));
@@ -37,7 +45,6 @@ public class MainActivity extends AppCompatActivity {
         planets.add(this.getItem(R.drawable.saturn, "Saturn", 7.0));
         planets.add(this.getItem(R.drawable.uranus, "Uranus", 8.0));
         planets.add(this.getItem(R.drawable.venus, "Venus", 9.0));
-
 
         return planets;
     }
