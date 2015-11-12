@@ -71,7 +71,8 @@ public class MainActivity extends AppCompatActivity implements AdapterView.OnIte
 
     @Override
     public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-        String info = "Pos = " + position + " id = " + id;
+        //String info = "Pos = " + position + " id = " + id;
+        String info = this.planets.get(position).get("name").toString();
         Toast.makeText(this, info, Toast.LENGTH_SHORT).show();
     }
 }
